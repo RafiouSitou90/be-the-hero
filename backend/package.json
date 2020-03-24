@@ -8,7 +8,7 @@
     "dev-server": "nodemon src/index.js",
     "start": "node src/index.js"
   },
-  "repository": "",
+  "repository": "https://github.com/RafiouSitou90/be-the-hero.git",
   "author": "Rafiou Sitou <rafiousitou90@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -17,7 +17,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.20.13",
-    "mongoose": "^5.9.5",
     "morgan": "^1.10.0",
     "sqlite3": "^4.1.1"
   },

@@ -51,7 +51,36 @@ const deleteIncidentById = async (req, res) => {
 	return res.status(204).send();
 };
 
-const updateIncidentById = async (req, res) => {};
+const updateIncidentById = async (req, res) => {
+	const { id } = req.params;
+	const ong_id = req.headers.authorization;
+
+	const incident = await DBConnection.table('incident')
+		.where('id', id)
+		.select('ong_id')
+		.first();
+
+	if (incident.ong_id !== ong_id) {
+		return res.status(401).json({ error: 'Operation not permitted' });
+	}
+
+	const { title, description, value } = req.body;
+
+	const result = await DBConnection.table('incident')
+		.where('id', id)
+		.andWhere('ong_id', incident.ong_id)
+		.update({
+			title,
+			description,
+			value
+		});
+
+	if (result === 1) {
+		return res.json({ message: 'Incident updated successfully' });
+	} else {
+		return res.json({ error: 'Incident update failed' });
+	}
+};
 
 module.exports = {
 	createIncident,

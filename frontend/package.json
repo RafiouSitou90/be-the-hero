@@ -2,6 +2,8 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/RafiouSitou90/be-the-hero.git",
+  "author": "Rafiou Sitou <rafiousitou90@gmail.com>",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

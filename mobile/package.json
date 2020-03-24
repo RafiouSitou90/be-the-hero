@@ -18,5 +18,7 @@
     "babel-preset-expo": "~8.0.0",
     "@babel/core": "^7.0.0"
   },
+  "repository": "https://github.com/RafiouSitou90/be-the-hero.git",
+  "author": "Rafiou Sitou <rafiousitou90@gmail.com>",
   "private": true
 }
