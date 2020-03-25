@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 
 const { DBConnection } = require('../../config');
 
@@ -7,12 +8,18 @@ const { DBConnection } = require('../../config');
  */
 const createOng = async (req, res) => {
 	const { name, email, whatsapp, city, uf } = req.body;
+	let { password } = req.body;
 	const id = crypto
 		.randomBytes(4)
 		.toString('HEX')
 		.toUpperCase();
 
-	await DBConnection.table('ong').insert({ id, name, email, whatsapp, city, uf });
+	const salt = bcrypt.genSaltSync(10);
+	const passwordHash = await bcrypt.hashSync(password, salt);
+
+	password = passwordHash;
+
+	await DBConnection.table('ong').insert({ id, password, name, email, whatsapp, city, uf });
 	return res.json({ id });
 };
 

@@ -9,6 +9,7 @@ exports.up = function(knex) {
 			.foreign('ong_id')
 			.references('id')
 			.inTable('ong');
+		table.datetime('created_at').defaultTo(knex.fn.now());
 	});
 };
 
