@@ -24,6 +24,7 @@ const getIncidentList = async (req, res) => {
 		.limit(limit)
 		.offset((page - 1) * limit)
 		.select(['incident.*', 'ong.name', 'ong.email', 'ong.whatsapp', 'ong.city', 'ong.uf'])
+		.orderBy('created_at', 'desc')
 		.orderBy('title', 'ASC');
 
 	res.header('X-Total-Count', count['count(*)']);
