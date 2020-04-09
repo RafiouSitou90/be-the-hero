@@ -5,8 +5,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev-server": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev-server": "nodemon src/server.js",
+    "start": "node src/index.js",
+    "test": "cross-env NODE_ENV=test jest"
   },
   "repository": "https://github.com/RafiouSitou90/be-the-hero.git",
   "author": "Rafiou Sitou <rafiousitou90@gmail.com>",
@@ -14,7 +15,9 @@
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
+    "celebrate": "^12.0.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.20.13",
@@ -22,6 +25,8 @@
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "jest": "^25.2.3",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

@@ -1,10 +1,9 @@
 const express = require('express');
-const dotenv = require('dotenv').config();
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const { errors } = require('celebrate');
 
-const { config } = require('./app/config');
 const { ongRoutes, incidentRoutes, profileRoutes, authRoutes } = require('./app/routes');
 
 const app = express();
@@ -19,6 +18,6 @@ app.use('/ongs', ongRoutes);
 app.use('/incidents', incidentRoutes);
 app.use('/profile', profileRoutes);
 
-app.listen(config.APP_PORT, () =>
-	console.log('App is running and listening on %s:%d', config.APP_SERVER_NAME, config.APP_PORT)
-);
+app.use(errors());
+
+module.exports = app;

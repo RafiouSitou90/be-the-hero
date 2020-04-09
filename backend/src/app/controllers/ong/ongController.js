@@ -1,6 +1,6 @@
-const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 
+const generateUniqueId = require('../../functions/generateUniqueId');
 const { DBConnection } = require('../../config');
 
 /**
@@ -9,10 +9,7 @@ const { DBConnection } = require('../../config');
 const createOng = async (req, res) => {
 	const { name, email, whatsapp, city, uf } = req.body;
 	let { password } = req.body;
-	const id = crypto
-		.randomBytes(4)
-		.toString('HEX')
-		.toUpperCase();
+	const id = generateUniqueId();
 
 	const salt = bcrypt.genSaltSync(10);
 	const passwordHash = await bcrypt.hashSync(password, salt);
